@@ -14,7 +14,6 @@ enum ViewType: String, CaseIterable, Identifiable {
     case audioInput = "Audio Input"
     case dictionary = "Dictionary"
     case settings = "Settings"
-    case license = "VoiceInk Pro"
 
     var id: String { rawValue }
 
@@ -30,7 +29,6 @@ enum ViewType: String, CaseIterable, Identifiable {
         case .audioInput: return "mic.fill"
         case .dictionary: return "character.book.closed.fill"
         case .settings: return "gearshape.fill"
-        case .license: return "checkmark.seal.fill"
         }
     }
 }
@@ -150,8 +148,6 @@ struct ContentView: View {
                     selectedView = .settings
                 case "AI Models":
                     selectedView = .models
-                case "VoiceInk Pro":
-                    selectedView = .license
                 case "History":
                     HistoryWindowController.shared.showHistoryWindow(
                         modelContainer: modelContext.container,
@@ -195,8 +191,6 @@ struct ContentView: View {
         case .settings:
             SettingsView()
                 .environmentObject(whisperState)
-        case .license:
-            LicenseManagementView()
         case .permissions:
             PermissionsView()
         }
